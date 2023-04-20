@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    現在の司会者:<span id="nowhost"></span>
+    <button id="decrement">前へ</button>
+    <button id="increment">次へ</button><br>
+    ID呼び出し（半角数字）<br>
+    <input type="text" id="idnumber"><button id="submitBtn">更新</button>
+</body>
+
+<script>
+
+const beforeButton = document.querySelector("#decrement");
+const nextButton = document.querySelector("#increment");
+const countReplicant = nodecg.Replicant('count')
+const hostReplicant = nodecg.Replicant('host')
+const url = "https://script.google.com/macros/s/AKfycbzHmAboMi1pxgZQVbb6lnQOzpgk3-QZQH4SdUHG4e2619EjiJmCJz3-Z7-uMPpgsTo/exec"
+var count_value = 0;
+const options = {
+	method: "GET"
+};
+
+function getJson(url, options){
+	return fetch(url, options)
+	.then(response => response.json());
+}
+
+async function fetchJson(url, options, counter){
+	const response = await getJson(url,options);
+	var json_number = counter; //ボタン処理用の関数
+	console.log(response[json_number]);
+	
+    hostReplicant.value = response[json_number].hostname;
+    countReplicant.value = json_number;
+}
+
+beforeButton.addEventListener("click",() =>{
+    count_value = Number(countReplicant.value);
+    count_value -= 1;
+    fetchJson(url, options, count_value);
+})
+
+nextButton.addEventListener("click",()=>{
+    count_value = Number(countReplicant.value);
+    console.log(countReplicant.value);
+    count_value += 1;
+    fetchJson(url,options, count_value);
+})
+document.getElementById('submitBtn').addEventListener('click', () =>{
+	const host_id = document.getElementById('idnumber').value;
+	fetchJson(url, options, host_id);
+})
+
+hostReplicant.on('change',(newVal)=>{
+	document.getElementById("nowhost").innerHTML = newVal;
+})
+
+</script>
+</html>
