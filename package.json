@@ -2,7 +2,7 @@
   "name": "LuckGameRTA2-Layout",
   "version": "2.0.0",
   "nodecg": {
-    "compatibleRange": "^1.5.0",
+    "compatibleRange": "^2.5.0",
     "dashboardPanels":[
       {
         "name": "ゲームのコントロールA",
