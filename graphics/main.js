@@ -42,6 +42,8 @@ const commD_Rep = nodecg.Replicant("commD");
 const board_Rep = nodecg.Replicant("board");
 const hostReplicant = nodecg.Replicant("host");
 
+const ctx = document.createElement('canvas').getContext('2d');
+
 // データ更新処理
 gametitleA_Rep.on('change',(newVal)=>{
 	document.getElementById("text_gameTitleA").innerHTML = newVal;
@@ -54,6 +56,8 @@ gameestimateA_Rep.on('change',(newVal)=>{
 })
 playerA_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerA_name").innerHTML = newVal;
+	document.getElementById("PlayerA_name2").innerHTML = newVal;
+	const textElem = document.getElementById("PlayerA_name2");
 })
 playerAtwitter_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerA_twitter").innerHTML = newVal;
@@ -82,6 +86,7 @@ gameestimateB_Rep.on('change',(newVal)=>{
 })
 playerB_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerB_name").innerHTML = newVal;
+	document.getElementById("PlayerB_name2").innerHTML = newVal;
 })
 playerBtwitter_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerB_twitter").innerHTML = newVal;
@@ -110,6 +115,7 @@ gameestimateC_Rep.on('change',(newVal)=>{
 })
 playerC_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerC_name").innerHTML = newVal;
+	document.getElementById("PlayerC_name2").innerHTML = newVal;
 })
 playerCtwitter_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerC_twitter").innerHTML = newVal;
@@ -138,6 +144,7 @@ gameestimateD_Rep.on('change',(newVal)=>{
 })
 playerD_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerD_name").innerHTML = newVal;
+	document.getElementById("PlayerD_name2").innerHTML = newVal;
 })
 playerDtwitter_Rep.on('change',(newVal)=>{
 	document.getElementById("PlayerD_twitter").innerHTML = newVal;

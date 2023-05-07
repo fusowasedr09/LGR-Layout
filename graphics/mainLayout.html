@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <link href="main.css" rel="stylesheet">
+    <script>
+        (function(d) {
+          var config = {
+            kitId: 'tlj2lir',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
     <title>Layout(16:9)</title>
 </head>
 <body>
     <div class="layer0">
-        <!-- 背景画像の指定用 
-        <img src="images/LGR_Layout.png" id="back_img"></img>-->
+        <img src="images/LGR_Layout.png" id="back_img"></img>
     </div>
     <div class="layer1">
         <!-- レイアウトの文字出し関係 -->
@@ -17,15 +26,13 @@
             掲示板用のデータ：<div id="board"></div>
             司会者の表示：<div id="host"></div>
 
-
             <div id="ScreenA">
-                画面A情報<br>
                 <div id="text_gameTitleA"></div><br>
                 <div id="text_gameCategoryA"></div><br>
                 <div id="text_gameEstimateA"></div><br>
-                <div id="text_gameSystemA"></div><br>
-            <!-- 走者データ -->
                 <div id="PlayerA_name"></div><br>
+
+                <div id="PlayerA_name2"></div><br>
                 <div id="PlayerA_twitch" class="kirikae"></div>
                 <div id="PlayerA_twitter" class="kirikae"></div>
                 <div id="PlayerA_youtube" class="kirikae"></div>
@@ -36,13 +43,12 @@
 
         <!-- 画面B情報欄 -->
         <div id="ScreenB">
-        画面B情報<br>
             <div id="text_gameTitleB"></div><br>
             <div id="text_gameCategoryB"></div><br>
             <div id="text_gameEstimateB"></div><br>
-            <div id="text_gameSystemB"></div><br>
-
             <div id="PlayerB_name"></div><br>
+
+            <div id="PlayerB_name2"></div><br>
             <div id="PlayerB_twitch" class="kirikae"></div>
             <div id="PlayerB_twitter" class="kirikae"></div>
             <div id="PlayerB_youtube" class="kirikae"></div>
@@ -52,13 +58,12 @@
 
         <!-- 画面C情報欄 -->
         <div id="ScreenC">
-        画面C情報<br>
             <div id="text_gameTitleC"></div><br>
             <div id="text_gameCategoryC"></div><br>
             <div id="text_gameEstimateC"></div><br>
-            <div id="text_gameSystemC"></div><br>
-
             <div id="PlayerC_name"></div><br>
+
+            <div id="PlayerC_name2"></div><br>
             <div id="PlayerC_twitch" class="kirikae"></div>
             <div id="PlayerC_twitter" class="kirikae"></div>
             <div id="PlayerC_youtube" class="kirikae"></div>
@@ -68,18 +73,16 @@
 
         <!-- 画面D情報欄 -->
         <div id="ScreenD">
-        画面D情報<br>
             <div id="text_gameTitleD"></div><br>
             <div id="text_gameCategoryD"></div><br>
             <div id="text_gameEstimateD"></div><br>
-            <div id="text_gameSystemD"></div><br>
-
             <div id="PlayerD_name"></div><br>
+
+            <div id="PlayerD_name2"></div><br>
             <div id="PlayerD_twitch" class="kirikae"></div>
             <div id="PlayerD_twitter" class="kirikae"></div>
             <div id="PlayerD_youtube" class="kirikae"></div>
             <div id="PlayerD_niconico" class="kirikae"></div>
-
             <div id="CommD_Name"></div><br>
         </div>
     </div>

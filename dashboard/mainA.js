@@ -59,18 +59,6 @@ gameestimateA_Rep.on('change',(newVal)=>{
 playerA_Rep.on('change',(newVal)=>{
 	document.getElementById("currentgameRunnerA").innerHTML = newVal;
 })
-playerAtwitch_Rep.on('change',(newVal)=>{
-	document.getElementById("playerAtwitch").innerHTML = newVal;
-})
-playerAtwitter_Rep.on('change',(newVal)=>{
-	document.getElementById("playerAtwitter").innerHTML = newVal;
-})
-playerAyoutube_Rep.on('change',(newVal)=>{
-	document.getElementById("playerAyoutube").innerHTML = newVal;
-})
-playerAniconico_Rep.on('change',(newVal)=>{
-	document.getElementById("playerAniconico").innerHTML = newVal;
-})
 commA_Rep.on('change',(newVal)=>{
 	document.getElementById("playerA_Comm").innerHTML = newVal;
 })

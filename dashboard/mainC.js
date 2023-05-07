@@ -36,6 +36,7 @@ async function fetchJson(url, options, counter){
 	playerCtwitter_Rep.value = response[json_number].twitter;
 	playerCyoutube_Rep.value = response[json_number].youtube;
 	playerCniconico_Rep.value = response[json_number].niconico;
+	commC_Rep.value = response[json_number].comm;
 }
 
 // ボタン処理（ID読み込み）
@@ -56,5 +57,8 @@ gameestimateC_Rep.on('change',(newVal)=>{
 })
 playerC_Rep.on('change',(newVal)=>{
 	document.getElementById("currentgameRunnerC").innerHTML = newVal;
+})
+commC_Rep.on('change',(newVal)=>{
+	document.getElementById("playerC_Comm").innerHTML = newVal;
 })
 
