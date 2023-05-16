@@ -1,171 +1,227 @@
-//NodeCG:Replicantの宣言
-const gametitleA_Rep = nodecg.Replicant("gametitleA");
-const gamecategoryA_Rep = nodecg.Replicant("gamecategoryA");
-const gameestimateA_Rep = nodecg.Replicant("gameestimateA");
-const playerA_Rep = nodecg.Replicant("playerA");
-const playerAtwitter_Rep = nodecg.Replicant("playerAtwitter", {defaultValue: ""});
-const playerAniconico_Rep = nodecg.Replicant("playerAniconico");
-const playerAyoutube_Rep = nodecg.Replicant("playerAyoutube");
-const playerAtwitch_Rep = nodecg.Replicant("playerAtwitch");
-const commA_Rep = nodecg.Replicant("commA");
+let nameprimesize = 1;
+let statusprimesize = 0.65;
+let gameprimesize = 0.75;
 
-const gametitleB_Rep = nodecg.Replicant("gametitleB");
-const gamecategoryB_Rep = nodecg.Replicant("gamecategoryB");
-const gameestimateB_Rep = nodecg.Replicant("gameestimateB");
-const playerB_Rep = nodecg.Replicant("playerB");
-const playerBtwitter_Rep = nodecg.Replicant("playerBtwitter");
-const playerBniconico_Rep = nodecg.Replicant("playerBniconico");
-const playerByoutube_Rep = nodecg.Replicant("playerByoutube");
-const playerBtwitch_Rep = nodecg.Replicant("playerBtwitch");
-const commB_Rep = nodecg.Replicant("commB");
+// フォントサイズ自動調整
+function FontSizeAdjust(object, primarysize, coefficient){
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	context.font = 36 * primarysize  + "px";
+	var metrics = context.measureText(object.innerText);
+	var width = metrics.width;
+	if(coefficient / width < primarysize){
+		object.style.fontSize =  coefficient / width + "em";
+	}else{
+		object.style.fontSize =  primarysize + "em";
+	}
+}
 
-const gametitleC_Rep = nodecg.Replicant("gametitleC");
-const gamecategoryC_Rep = nodecg.Replicant("gamecategoryC");
-const gameestimateC_Rep = nodecg.Replicant("gameestimateC");
-const playerC_Rep = nodecg.Replicant("playerC");
-const playerCtwitter_Rep = nodecg.Replicant("playerCtwitter");
-const playerCniconico_Rep = nodecg.Replicant("playerCniconico");
-const playerCyoutube_Rep = nodecg.Replicant("playerCyoutube");
-const playerCtwitch_Rep = nodecg.Replicant("playerCtwitch");
-const commC_Rep = nodecg.Replicant("commC");
-
-const gametitleD_Rep = nodecg.Replicant("gametitleD");
-const gamecategoryD_Rep = nodecg.Replicant("gamecategoryD");
-const gameestimateD_Rep = nodecg.Replicant("gameestimateD");
-const playerD_Rep = nodecg.Replicant("playerD");
-const playerDtwitter_Rep = nodecg.Replicant("playerDtwitter");
-const playerDniconico_Rep = nodecg.Replicant("playerDniconico");
-const playerDyoutube_Rep = nodecg.Replicant("playerDyoutube");
-const playerDtwitch_Rep = nodecg.Replicant("playerDtwitch");
-const commD_Rep = nodecg.Replicant("commD");
-
-const board_Rep = nodecg.Replicant("board");
-const hostReplicant = nodecg.Replicant("host");
-
-const ctx = document.createElement('canvas').getContext('2d');
-
-// データ更新処理
-gametitleA_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameTitleA").innerHTML = newVal;
+// データ更新処理(Eventemitter,PlayerA)
+nodecg.Replicant("gametitleA").on('change',(newVal)=>{
+	const A_title = document.getElementById("text_gameTitleA");
+	A_title.innerHTML = newVal;
+	FontSizeAdjust(A_title, gameprimesize, 120)
 })
-gamecategoryA_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameCategoryA").innerHTML = newVal;
+nodecg.Replicant("gamecategoryA").on('change',(newVal)=>{
+	const A_category = document.getElementById("text_gameCategoryA")
+	A_category.innerHTML = newVal;
+	FontSizeAdjust(A_category, gameprimesize, 120)
 })
-gameestimateA_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameEstimateA").innerHTML = newVal;
+nodecg.Replicant("gameestimateA").on('change',(newVal)=>{
+	const A_estimate = document.getElementById("text_gameEstimateA");
+	A_estimate.innerHTML = newVal;
+	FontSizeAdjust(A_estimate, 1, 60)
 })
-playerA_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerA_name").innerHTML = newVal;
-	document.getElementById("PlayerA_name2").innerHTML = newVal;
-	const textElem = document.getElementById("PlayerA_name2");
+nodecg.Replicant("playerA").on('change',(newVal)=>{
+	const A_nameleft = document.getElementById("PlayerA_name2");
+	const A_nameright = document.getElementById("PlayerA_name");
+	A_nameleft.innerHTML = newVal;
+	A_nameright.innerHTML = newVal;
+	FontSizeAdjust(A_nameleft, nameprimesize, 60);
+	FontSizeAdjust(A_nameright, nameprimesize, 60);
 })
-playerAtwitter_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerA_twitter").innerHTML = newVal;
+nodecg.Replicant("playerAtwitter").on('change',(newVal)=>{
+	const A_twitter = document.getElementById("PlayerA_twitter");
+	A_twitter.innerHTML = newVal;
+	FontSizeAdjust(A_twitter, statusprimesize, 50);
 })
-playerAtwitch_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerA_twitch").innerHTML = newVal;
+nodecg.Replicant("playerAniconico").on('change',(newVal)=>{
+	const A_niconico = document.getElementById("PlayerA_niconico");
+	A_niconico.innerHTML = newVal;
+	FontSizeAdjust(A_niconico, statusprimesize, 50);
 })
-playerAniconico_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerA_niconico").innerHTML = newVal;
+nodecg.Replicant("playerAtwitch").on('change',(newVal)=>{
+	const A_twitch = document.getElementById("PlayerA_twitch");
+	A_twitch.innerHTML = newVal;
+	FontSizeAdjust(A_twitch, statusprimesize, 50);
 })
-playerAyoutube_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerA_youtube").innerHTML = newVal;
+nodecg.Replicant("playerAyoutube").on('change',(newVal)=>{
+	const A_youtube = document.getElementById("PlayerA_youtube");
+	A_youtube.innerHTML = newVal;
+	FontSizeAdjust(A_youtube,statusprimesize,50);
 })
-commA_Rep.on('change',(newVal)=>{
-	document.getElementById("CommA_Name").innerHTML = newVal;
+nodecg.Replicant("commA").on('change',(newVal)=>{
+	const A_comment = document.getElementById("CommA_Name");
+	A_comment.innerHTML = newVal;
+	FontSizeAdjust(A_comment,0.75, 50);
 })
 
-gametitleB_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameTitleB").innerHTML = newVal;
+// データ更新処理(PlayerB)
+nodecg.Replicant("gametitleB").on('change',(newVal)=>{
+	const B_title = document.getElementById("text_gameTitleB");
+	B_title.innerHTML = newVal;
+	FontSizeAdjust(B_title, gameprimesize, 120)
 })
-gamecategoryB_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameCategoryB").innerHTML = newVal;
+nodecg.Replicant("gamecategoryB").on('change',(newVal)=>{
+	const B_category = document.getElementById("text_gameCategoryB");
+	B_category.innerHTML = newVal;
+	FontSizeAdjust(B_category, gameprimesize, 120);
 })
-gameestimateB_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameEstimateB").innerHTML = newVal;
+nodecg.Replicant("gameestimateB").on('change',(newVal)=>{
+	const B_estimate = document.getElementById("text_gameEstimateB");
+	B_estimate.innerHTML = newVal;
+	FontSizeAdjust(B_estimate, 1, 60)
 })
-playerB_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerB_name").innerHTML = newVal;
-	document.getElementById("PlayerB_name2").innerHTML = newVal;
+nodecg.Replicant("playerB").on('change',(newVal)=>{
+	const B_nameleft = document.getElementById("PlayerB_name2");
+	const B_nameright = document.getElementById("PlayerB_name");
+	B_nameleft.innerHTML = newVal;
+	B_nameright.innerHTML = newVal;
+	FontSizeAdjust(B_nameleft, nameprimesize, 60);
+	FontSizeAdjust(B_nameright, nameprimesize, 60);
 })
-playerBtwitter_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerB_twitter").innerHTML = newVal;
+nodecg.Replicant("playerBtwitter").on('change',(newVal)=>{
+	const B_twitter = document.getElementById("PlayerB_twitter")
+	B_twitter.innerHTML = newVal;
+	FontSizeAdjust(B_twitter, statusprimesize, 50);
 })
-playerBtwitch_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerB_twitch").innerHTML = newVal;
+nodecg.Replicant("playerBtwitch").on('change',(newVal)=>{
+	const B_twitch = document.getElementById("PlayerB_twitch")
+	B_twitch.innerHTML = newVal;
+	FontSizeAdjust(B_twitch,statusprimesize, 50)
 })
-playerBniconico_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerB_niconico").innerHTML = newVal;
+nodecg.Replicant("playerBniconico").on('change',(newVal)=>{
+	const B_niconico = document.getElementById("PlayerB_niconico")
+	B_niconico.innerHTML = newVal;
+	FontSizeAdjust(B_niconico,statusprimesize, 50)
 })
-playerByoutube_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerB_youtube").innerHTML = newVal;
+nodecg.Replicant("playerByoutube").on('change',(newVal)=>{
+	const B_youtube = document.getElementById("PlayerB_youtube");
+	B_youtube.innerHTML = newVal;
+	FontSizeAdjust(B_youtube,statusprimesize, 50)
 })
-commB_Rep.on('change',(newVal)=>{
-	document.getElementById("CommB_Name").innerHTML = newVal;
-})
-
-gametitleC_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameTitleC").innerHTML = newVal;
-})
-gamecategoryC_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameCategoryC").innerHTML = newVal;
-})
-gameestimateC_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameEstimateC").innerHTML = newVal;
-})
-playerC_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerC_name").innerHTML = newVal;
-	document.getElementById("PlayerC_name2").innerHTML = newVal;
-})
-playerCtwitter_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerC_twitter").innerHTML = newVal;
-})
-playerCtwitch_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerC_twitch").innerHTML = newVal;
-})
-playerCniconico_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerC_niconico").innerHTML = newVal;
-})
-playerCyoutube_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerC_youtube").innerHTML = newVal;
-})
-commC_Rep.on('change',(newVal)=>{
-	document.getElementById("CommC_Name").innerHTML = newVal;
+nodecg.Replicant("commB").on('change',(newVal)=>{
+	const B_comment = document.getElementById("CommB_Name");
+	B_comment.innerHTML = newVal;
+	FontSizeAdjust(B_comment,0.75, 50);
 })
 
-gametitleD_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameTitleD").innerHTML = newVal;
+// データ更新処理(PlayerC)
+nodecg.Replicant("gametitleC").on('change',(newVal)=>{
+	const C_title = document.getElementById("text_gameTitleC");
+	C_title.innerHTML = newVal;
+	FontSizeAdjust(C_title, gameprimesize, 120)
 })
-gamecategoryD_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameCategoryD").innerHTML = newVal;
+nodecg.Replicant("gamecategoryC").on('change',(newVal)=>{
+	const C_category = document.getElementById("text_gameCategoryC")
+	C_category.innerHTML = newVal;
+	FontSizeAdjust(C_category, gameprimesize, 120)
 })
-gameestimateD_Rep.on('change',(newVal)=>{
-	document.getElementById("text_gameEstimateD").innerHTML = newVal;
+nodecg.Replicant("gameestimateC").on('change',(newVal)=>{
+	const C_estimate = document.getElementById("text_gameEstimateC");
+	C_estimate.innerHTML = newVal;
+	FontSizeAdjust(C_estimate, 1, 60)
 })
-playerD_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerD_name").innerHTML = newVal;
-	document.getElementById("PlayerD_name2").innerHTML = newVal;
+nodecg.Replicant("playerC").on('change',(newVal)=>{
+	const C_nameleft = document.getElementById("PlayerC_name2");
+	const C_nameright = document.getElementById("PlayerC_name");
+	C_nameleft.innerHTML = newVal;
+	C_nameright.innerHTML = newVal;
+	FontSizeAdjust(C_nameleft, nameprimesize, 60);
+	FontSizeAdjust(C_nameright, nameprimesize, 60);
 })
-playerDtwitter_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerD_twitter").innerHTML = newVal;
+nodecg.Replicant("playerCtwitter").on('change',(newVal)=>{
+	const C_twitter = document.getElementById("PlayerC_twitter")
+	C_twitter.innerHTML = newVal;
+	FontSizeAdjust(C_twitter, statusprimesize, 50);
 })
-playerDtwitch_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerD_twitch").innerHTML = newVal;
+nodecg.Replicant("playerCtwitch").on('change',(newVal)=>{
+	const C_twitch = document.getElementById("PlayerC_twitch")
+	C_twitch.innerHTML = newVal;
+	FontSizeAdjust(C_twitch,statusprimesize, 50)
 })
-playerDniconico_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerD_niconico").innerHTML = newVal;
+nodecg.Replicant("playerCniconico").on('change',(newVal)=>{
+	const C_niconico = document.getElementById("PlayerC_niconico")
+	C_niconico.innerHTML = newVal;
+	FontSizeAdjust(C_niconico,statusprimesize, 50)
 })
-playerDyoutube_Rep.on('change',(newVal)=>{
-	document.getElementById("PlayerD_youtube").innerHTML = newVal;
+nodecg.Replicant("playerCyoutube").on('change',(newVal)=>{
+	const C_youtube = document.getElementById("PlayerC_youtube");
+	C_youtube.innerHTML = newVal;
+	FontSizeAdjust(C_youtube,statusprimesize, 50)
 })
-commD_Rep.on('change',(newVal)=>{
-	document.getElementById("CommD_Name").innerHTML = newVal;
+nodecg.Replicant("commC").on('change',(newVal)=>{
+	const C_comment = document.getElementById("CommC_Name");
+	C_comment.innerHTML = newVal;
+	FontSizeAdjust(C_comment,0.75, 50);
 })
 
-board_Rep.on('change',(newVal)=>{
+// データ更新処理(PlayerD)
+nodecg.Replicant("gametitleD").on('change',(newVal)=>{
+	const D_title = document.getElementById("text_gameTitleD");
+	D_title.innerHTML = newVal;
+	FontSizeAdjust(D_title, gameprimesize, 120)
+})
+nodecg.Replicant("gamecategoryD").on('change',(newVal)=>{
+	const D_category = document.getElementById("text_gameCategoryD")
+	D_category.innerHTML = newVal;
+	FontSizeAdjust(D_category, gameprimesize, 120)
+})
+nodecg.Replicant("gameestimateD").on('change',(newVal)=>{
+	const D_estimate = document.getElementById("text_gameEstimateD");
+	D_estimate.innerHTML = newVal;
+	FontSizeAdjust(D_estimate, 1, 60)
+})
+nodecg.Replicant("playerD").on('change',(newVal)=>{
+	const D_nameleft = document.getElementById("PlayerD_name2");
+	const D_nameright = document.getElementById("PlayerD_name");
+	D_nameleft.innerHTML = newVal;
+	D_nameright.innerHTML = newVal;
+	FontSizeAdjust(D_nameleft, nameprimesize, 60);
+	FontSizeAdjust(D_nameright, nameprimesize, 60)
+})
+nodecg.Replicant("playerDtwitter").on('change',(newVal)=>{
+	const D_twitter = document.getElementById("PlayerD_twitter")
+	D_twitter.innerHTML = newVal;
+	FontSizeAdjust(D_twitter, statusprimesize, 50);
+})
+nodecg.Replicant("playerDtwitch").on('change',(newVal)=>{
+	const D_twitch = document.getElementById("PlayerD_twitch")
+	D_twitch.innerHTML = newVal;
+	FontSizeAdjust(D_twitch,statusprimesize, 50)
+})
+nodecg.Replicant("playerDniconico").on('change',(newVal)=>{
+	const D_niconico = document.getElementById("PlayerD_niconico")
+	D_niconico.innerHTML = newVal;
+	FontSizeAdjust(D_niconico,statusprimesize, 50)
+})
+nodecg.Replicant("playerDyoutube").on('change',(newVal)=>{
+	const D_youtube = document.getElementById("PlayerD_youtube");
+	D_youtube.innerHTML = newVal;
+	FontSizeAdjust(D_youtube,statusprimesize, 50)
+})
+nodecg.Replicant("commD").on('change',(newVal)=>{
+	const D_comment = document.getElementById("CommD_Name");
+	D_comment.innerHTML = newVal;
+	FontSizeAdjust(D_comment,0.75, 50);
+})
+
+// データ更新処理(掲示板)
+nodecg.Replicant("board").on('change',(newVal)=>{
 	document.getElementById("board").innerHTML = newVal;
 })
 
-hostReplicant.on('change',(newVal)=>{
+// データ更新処理(司会進行)
+nodecg.Replicant("host").on('change',(newVal)=>{
 	document.getElementById("host").innerHTML = newVal;
 })

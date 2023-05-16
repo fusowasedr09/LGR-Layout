@@ -50,7 +50,22 @@
     ],
     "graphics": [
       {
-        "file": "mainLayout.html",
+        "file": "mainLayoutA.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "mainLayoutB.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "mainLayoutC.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "mainLayoutD.html",
         "width": 1920,
         "height": 1080
       }

@@ -1,4 +1,4 @@
-const url = "https://script.google.com/macros/s/AKfycbwI0Wr02aZTlcv-Vr4FOYHfaq-uYICg5iinDLwLZd6XPgKIdnQsgpz4NT3BdsxMTFM/exec" // スプレッドシートのデータのURLを適宜置き換えて使用
+const url = "https://script.google.com/macros/s/AKfycbzSCc-oIr1YEsmwlUHTxG437KhitIVezlRqb0XredEOJ3Wh0Xibix0CHHNKs7Lowvs/exec" // スプレッドシートのデータのURLを適宜置き換えて使用
 const options = {
 	method: "GET"
 };
