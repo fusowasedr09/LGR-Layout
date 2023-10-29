@@ -45,27 +45,18 @@
         "title": "司会管理",
         "width": 2,
         "file": "host.html"
+      },
+      {
+        "name": "音声出してる人表示用",
+        "title": "音声出してる人表示用",
+        "width": 2,
+        "file": "panel.html"
       }
       
     ],
     "graphics": [
       {
-        "file": "mainLayoutA.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "mainLayoutB.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "mainLayoutC.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "mainLayoutD.html",
+        "file": "mainLayout.html",
         "width": 1920,
         "height": 1080
       }
