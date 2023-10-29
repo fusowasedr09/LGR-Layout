@@ -215,12 +215,10 @@ nodecg.Replicant("commD").on('change',(newVal)=>{
 	D_comment.innerHTML = newVal;
 	FontSizeAdjust(D_comment,0.75, 50);
 })
-
 // データ更新処理(掲示板)
 nodecg.Replicant("board").on('change',(newVal)=>{
 	document.getElementById("board").innerHTML = newVal;
 })
-
 // データ更新処理(司会進行)
 nodecg.Replicant("host").on('change',(newVal)=>{
 	document.getElementById("host").innerHTML = newVal;

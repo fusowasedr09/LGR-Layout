@@ -292,26 +292,31 @@ body{
 /* PlayerA */
 #ScreenA #Twitter_iconA{
 	position:fixed;
-	top:481px;
-	left: 70px;
+	top: 465px;
+	left: 72px;
+	font-size: 120%;
+	background-color: aqua;
 }
 
 #ScreenA #Twitch_iconA{
 	position:fixed;
 	top: 536px;
 	left: 70px;
+	background-color: aqua;
 }
 
 #ScreenA #niconico_iconA{
 	position:fixed;
 	top:481px;
 	left: 70px;
+	background-color: aqua;
 }
 
 #ScreenA #Youtube_iconA{
 	position:fixed;
 	top:536px;
 	left: 70px;
+	background-color: aqua;
 }
 
 #ScreenA #PlayerA_twitter{
@@ -324,6 +329,7 @@ body{
 	height: 36px;
 	top: 481px;
 	left: 120px;
+	background-color: blue;
 }
 #ScreenA #PlayerA_niconico{
 	display:flex;
@@ -335,6 +341,7 @@ body{
 	height: 36px;
 	top: 481px;
 	left: 120px;
+	background-color: blue;
 }
 #ScreenA #PlayerA_twitch{
 	display:flex;
@@ -346,6 +353,7 @@ body{
 	height: 36px;
 	top: 536px;
 	left: 120px;
+	background-color: blue;
 }
 #ScreenA #PlayerA_youtube{
 	display:flex;
@@ -357,6 +365,7 @@ body{
 	height: 36px;
 	top: 536px;
 	left: 120px;
+	background-color: blue;
 }
 
 /* PlayerB */
